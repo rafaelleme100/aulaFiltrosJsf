@@ -1,0 +1,32 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<meta charset="UTF-8" />
+	<h:outputStylesheet library="css" name="style.css" />
+</h:head>
+<f:event listener="#{loginMBean.isLogged}" type="preRenderView" />
+<h:body>
+	<h3>Digite seu nome de usuário e senha</h3>
+	<h:form>
+		<p:messages autoUpdate="true" />
+		<p:panelGrid columns="3" cellpadding="10" cellspacing="1">
+			Usuário:
+			<p:inputText id="usuario"
+				required="true"
+				requiredMessage="Campo usuário obrigatório"
+			 	value="#{loginMBean.usuario}" />
+		 	<p:message  for="usuario" />
+			Senha:
+			<p:password id="senha"
+				required="true"
+				requiredMessage="Campo senha obrigatório" 
+				value="#{loginMBean.senha}"/>
+			<p:message  for="senha" />
+			<p:commandButton value="Login" action="#{loginMBean.login()}"/>
+		</p:panelGrid>
+	</h:form>
+</h:body>
+</html>
